@@ -1,6 +1,6 @@
 # PHP Mini Framework
 
-I wrote this because I got tired of these massive frameworks that are slow 
+I wrote this because I got tired of the massive PHP frameworks that are slow 
 as dogs and are just too much.  Even the Sinatra knockoffs are just too 
 much.  Sometimes you just want to be able to get something simple done
 without all the fluff.  Sometimes you use PHP because it is so ubiquitous,
@@ -29,7 +29,7 @@ that looks something like this:
     Mini::get('route')->register('/stuff\/(\d+)$/i', function($stuff_id) {
         $content = Mini::get('stuff')->getStuffList($stuff_id);
         Mini::get('response')->setType('json')
-                              ->setContent($content);
+                             ->setContent($content);
     });
 
     Mini::get('response')->flush();
@@ -39,7 +39,7 @@ Yep, that's it.  Include `mini.php`. Initialize your domain logic, which is
 done by directory.  Every file in the directory is autoloaded, all the 
 classes are available.  Register the `Stuff` class with the framework; this 
 is sort of like having dependency injection but way easier for small projects.
-Get the `Route` class and register a route using a regular expression, using
+Get the `Route` class and register a route using a regular expression and
 a closure to encapsulate the execution.  Use the `Response` class to formulate
 the response after processing your `stuff`.  At the end just flush the response.
 You will want to add more entries to the `typemap.php` file if you want to 
