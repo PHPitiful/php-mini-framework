@@ -14,8 +14,7 @@ Clone the project. There is a `mini` directory in it.  This is the
 framework, all less than 4kB and 150 LOC of it.  Add another directory 
 for your domain logic classes; perhaps it is called `stuff` and 
 contains a file `stuff.php` with a couple handy methods in a `Stuff` 
-class.  Create an `index.php` file in the root of the project  
-that looks something like this:
+class.  Create an `index.php` file in the root of the project that looks something like this:
 
 
 ```
