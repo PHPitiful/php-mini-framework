@@ -43,8 +43,8 @@ a closure to encapsulate the execution.  Use the `Response` class to formulate
 the response after processing your `stuff`.  At the end just flush the response.
 You will want to add more entries to the `typemap.php` file if you want to 
 support more types of content. You can put parameters in a `.env` file, .ini 
-style.  Oh look, there is an accessor for the `.env` contents that is actually 
-_not_ the terrible PHP global design pattern seen elsewhere. Don't forget to 
+style.  There is an accessor for the `.env` contents, like there is for everything,
+that is _not_ the terrible PHP global design pattern seen elsewhere. Don't forget to 
 set you web server up to ram everything through `index.php`.
 
 
