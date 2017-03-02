@@ -57,3 +57,8 @@ read the code and notice how simple the basic ideas are.  Learn that you
 can also make a framework.  Maybe you can adapt it to what you need 
 rather that using an out of the box bloated framework.
 
+If you decide to hack this project for your next project's framework, you 
+might note that you can simplify the routing by simply initializing the route
+array manually.  You should take care to do this in an initializer method 
+utilized by the constructor, as PHP does not support anonymous functions
+in class variables defined in the class.
