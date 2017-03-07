@@ -57,11 +57,16 @@ read the code and notice how simple the basic ideas are.  Learn that you
 can also make a framework.  Maybe you can adapt it to what you need 
 rather that using an out of the box bloated framework.
 
-If you decide to hack this project for your next project's framework, you 
-might note that you can simplify the routing by simply initializing the route
-array manually.  You should take care to do this in an initializer method 
-utilized by the constructor, as PHP does not support anonymous functions
-in class variables defined in the class.  You can do it something like this:
+
+
+## A Different Route
+
+Yeah, that was supposed to be funny.  If you decide to hack this project 
+for your next project's framework, you might note that you can simplify 
+the routing by simply initializing the route array manually.  You should 
+take care to do this in an initializer method utilized by the constructor, 
+as PHP does not support anonymous functions in class variables defined 
+in the class.  You can do it something like this:
 
 ```
 <?php
@@ -75,11 +80,8 @@ in class variables defined in the class.  You can do it something like this:
         }
         
         public function defineRoutes() {
-            $this->routes = [
-                              '/foo/i' => function() {
-                                 return 'This is an example';
-                              }
-                             ];
+            $this->routes = ['/foo/i' => function() { return 'I ate foo.'; },
+                             '/bar\/(\S+)/i' => function($id) { return 'My bar ID.' }];
         }
    
         public function handle() {
@@ -96,9 +98,12 @@ in class variables defined in the class.  You can do it something like this:
     (new Route())->handle();
 ```
 
-So yeah, it is easy to clone this project and use it, but it is also really easy to 
-write your own fairly featureful router.  And if you want to use nomenclature like `[:id]`
-for the routes, you can just replace whatever your definitions are for a regular 
-expression.  Or better yet just be good with regular expressions.  You can also
-put an autoloader in here and have a really simple one file router that connects to 
-your domain logic.  This isn't real tough stuff.
+So yeah, it is easy to clone this project and use it as is, but it is also really easy to 
+write your own fairly featureful router based on some of the ideas.  Maybe you just add an 
+autoloader to the above and roll with it.  I mean really, the above has two matched routes
+and a default route and is less than 30 lines.  If you want to use nomenclature like `[:id]` 
+for the routes, you can just replace whatever your definitions are for a regular expression 
+with these keywords and swap them out at evaluation time.  Or better yet quit being a 
+wimp and just be good with regular expressions.  You can also put an autoloader in here and 
+have a really simple one file router that connects to your domain logic.  This isn't real 
+tough stuff.
