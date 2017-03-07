@@ -61,4 +61,44 @@ If you decide to hack this project for your next project's framework, you
 might note that you can simplify the routing by simply initializing the route
 array manually.  You should take care to do this in an initializer method 
 utilized by the constructor, as PHP does not support anonymous functions
-in class variables defined in the class.
+in class variables defined in the class.  You can do it something like this:
+
+```
+<?php
+
+    class Route {
+   
+        private $routes;
+   
+        public function __construct() {
+            $this->defineRoutes();
+        }
+        
+        public function defineRoutes() {
+            $this->routes = [
+                              '/foo/i' => function() {
+                                 return 'This is an example';
+                              }
+                             ];
+        }
+   
+        public function handle() {
+            foreach ($this->routes as $regex => $callback) {
+                if (preg_match($regex, $_SERVER['REQUEST_URI'], $params)) {
+                    array_shift($params);
+                    return call_user_func_array($callback, array_values($params));
+                }
+            }
+            return 'Routing error!';
+        }
+    }
+    
+    (new Route())->handle();
+```
+
+So yeah, it is easy to clone this project and use it, but it is also really easy to 
+write your own fairly featureful router.  And if you want to use nomenclature like `[:id]`
+for the routes, you can just replace whatever your definitions are for a regular 
+expression.  Or better yet just be good with regular expressions.  You can also
+put an autoloader in here and have a really simple one file router that connects to 
+your domain logic.  This isn't real tough stuff.
