@@ -44,8 +44,10 @@ the response after processing your `stuff`.  At the end just flush the response.
 You will want to add more entries to the `typemap.php` file if you want to 
 support more types of content. You can put parameters in a `.env` file, .ini 
 style.  There is an accessor for the `.env` contents, like there is for everything,
-that is _not_ the terrible PHP global design pattern seen elsewhere. Don't forget to 
-set you web server up to ram everything through `index.php`.
+that is _not_ the terrible PHP global design pattern seen elsewhere using 
+`getenv`. Don't forget to set you web server up to ram everything through 
+`index.php`.  Don't be a dope and entertain class name collision, or else update
+the autoloading mechanism to use namespaces.
 
 
 
